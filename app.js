@@ -12,7 +12,6 @@ const dbUrl = process.env.MONGO_URL;
 
 app.use(express.json());
 
-app.use(bodyParser.json())
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
