@@ -13,6 +13,7 @@ exports.addSchool = async (req, res) => {
 
   try {
     const newSchool = new School({ name, address, latitude, longitude });
+    console.log(newSchool);
 
     await newSchool.save();
 
@@ -47,7 +48,7 @@ exports.listSchools = async (req, res) => {
       return { ...school._doc, distance };
     }).sort((a, b) => a.distance - b.distance);
 
-
+    console.log(sortedSchools);
     res.json(sortedSchools);
 
   } 

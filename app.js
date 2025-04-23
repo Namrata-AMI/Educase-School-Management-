@@ -2,6 +2,7 @@ require('dotenv').config();
 
 
 const express = require('express');
+const path = require("path");
 const bodyParser = require('body-parser');
 const mongoose  = require("mongoose");
 const schoolRoutes = require("./routes/school.js");
@@ -11,8 +12,14 @@ const dbUrl = process.env.MONGO_URL;
 
 app.use(bodyParser.json())
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 app.use('/', schoolRoutes);
 
+app.get("/",(req,res)=>{
+    res.render("index.ejs");
+})
 
 main()
 .then((res)=>{
